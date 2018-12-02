@@ -1,2 +1,2 @@
-# rishabhsahay.com
+# RishabhSahay.com
 Personal Website
