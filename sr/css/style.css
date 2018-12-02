@@ -1,0 +1,659 @@
+body{
+    width:100%;
+    margin:0;
+    font-family:"Raleway";
+
+}
+
+img{
+    width:100%;
+}
+.material-icons.ic-18{
+    font-size:18px;
+}
+.material-icons.ic-20{
+    font-size:20px;
+}
+.material-icons.ic-22{
+    font-size:22px;
+}
+.material-icons.ic-24{
+    font-size:24px;
+}
+div{
+    box-sizing: border-box;
+}
+
+header{
+    width: 100%;
+    background: none;
+    text-align: center;
+    background: #fff;
+    height: 50px;
+}
+#header{
+    max-width: 1180px;
+    width: 100%;
+    display: inline-block;
+    padding-top: 0px;
+}
+.logo{
+    width: 100px;
+    float:left;
+    padding: 10px 0 0;
+}
+
+
+#content{
+    position: relative;
+    width: 100%;
+    top: 0;
+    z-index: 1;
+}
+.body_head{
+    background: -webkit-radial-gradient(30% 49%, contain, #0ca2db, #0189bc);
+    background: -moz-radial-gradient(40% 49%, contain, #243eae, #1b2e95);
+    background-color: rgba(0, 0, 0, 0);
+    background-repeat: repeat;
+    background: -ms-radial-gradient(30% 49%, contain, #0ca2db, #0189bc);
+    width: 100%;
+    text-align: center;
+    padding: 5% 0 3em;
+    
+    background-repeat: no-repeat;
+    background-color: #082ae5;
+}
+
+.row_wrap{
+    width: 100%;
+    max-width: 1180px;
+    display: inline-block;
+}
+
+.c_row{
+    display:inline-block;
+    width:100%;
+    margin-top: 5px;
+}
+
+.app_wrap{
+    max-width: 1180px;
+    display: inline-block;
+    width: 100%;
+}
+
+.search{
+    display: inline-block;
+    width: 80%;
+    max-width: 550px;
+    float: left;
+    padding: 0;
+    border: 1px solid #5775f9;
+    border-radius: 3px;
+}
+
+.search input[type="text"]{
+    width: 100%;
+    height: 42px;
+    border: none;
+    background: rgba(221, 221, 221, 0) url("../images/search.png") no-repeat scroll 2% 50%;
+    border-radius: 24px;
+    color: #FFF;
+    font-size: 20px;
+    padding-left: 2.5em;
+    font-weight: 200;
+
+}
+.search_help{
+    display: inline-block;
+    width: 100%;
+    text-align: left;
+    padding-left: 3.5em;
+    margin-top: 14px;
+    color: #94a5f2;
+    font-size: 16px;
+}
+
+.filter_but{
+    display: inline-block;
+    color: #a1a1a1;
+    text-align: left;
+    margin-top: 6px;
+}
+.filter_wrap{
+    width: 100%;
+    background: #fff;
+    font-family: "open sans";
+}
+.filter_text{
+    display: inline-block;
+    padding: 15px;
+    margin-right: 1em;
+}
+
+.pagination{
+    display: inline-block;
+    padding-left: 0;
+    margin: 20px 0 35px;
+    border-radius: 4px;
+    width: 35%;
+    text-align: right;
+    position: relative;
+}
+.pagi_text{
+    display: inline-block;
+}
+.pagi_nav{
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 1em;
+}
+.pagi_left, .pagi_right{
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    background: #ddd;
+    text-align: center;
+    padding-top: 2px;
+    border-radius: 28px;
+    cursor: pointer;
+}
+.pagi_left:hover, .pagi_right:hover{
+    background: #656565;
+    color:#fff;
+}
+
+.filter_status{
+    display: inline-block;
+}
+.filter_status_wrap{
+    display: inline-block;
+    vertical-align: top;
+    text-align: center;
+    margin: 5px 26px 5px 0;
+    cursor: pointer;
+}
+.filter_status_wrap .icon{
+    height: 22px;
+    display: inline-block;
+    overflow: hidden;
+    transition-duration:0.5s;
+}
+.filter_status_text{
+    font-size: 12px;
+    line-height: 15px;
+    color: #a5a5a5;
+    transition-duration:0.5s;
+}
+
+
+.body_wrap{
+    text-align: center;
+    background: #f0f0f0;
+    box-sizing: border-box;
+}
+.loading_wrap{
+    display:inline-block;
+}
+.result_detail{
+    text-align: left;
+    padding: 1em 0;
+    margin-top: 1em;
+    color: #7b7b7b;
+}
+.website_list{
+    display: inline-block;
+    text-align: center;
+    min-height: 600px;
+    width: 50%;
+    float: left;
+}
+.ser_bg{
+    background:#fff;
+}
+.result_wrap{
+    display: inline-block;
+    background: rgb(255, 255, 255) none repeat scroll 0% 0%;
+    position: relative;
+    vertical-align: top;
+    text-align: left;
+    border-bottom: 1px solid #f6f6f6;
+    width: 100%;
+    margin-bottom: 2em;
+    font-family: 'Open sans';
+    min-height: 200px;
+}
+.c_img{
+    width: 225px;
+    display: inline-block;
+    overflow: hidden;
+    position: relative;
+    float: left;
+    height: 225px;
+    background: #aeaeae;
+    padding-top: 24px;
+}
+.c_img img{
+    float:left;
+}
+
+
+.c_icon{
+    display: inline-block;
+    vertical-align: top;
+    color: #aeaeae;
+}
+.c_info{
+    padding: 1em;
+    display: inline-block;
+    text-align: left;
+    vertical-align: top;
+    float: left;
+    padding-right: 5em;
+}
+.c_title{
+    font-size: 24px;
+    display: inline-block;
+    margin-bottom: 6px;
+    text-decoration: none;
+    color: #333;
+    width: 100%;
+    text-transform: capitalize;
+    font-weight: 600;
+}
+.c_title img{
+    width: 32px;
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    top: -3px;
+    margin-right: 5px;
+    left: -2px;
+}
+
+.icon{
+    color: #c0c0c0;
+    display: inline-block;
+    position: relative;
+    top: 2px;
+    vertical-align: top;
+}
+
+.platformIcon{
+    display: inline-block;
+    background: #ddd;
+    width: 75px;
+    position: relative;
+}
+.platformIcon.xbox{
+    width: 85px;
+}
+.platformIcon.ps{
+    width: 68px;
+    top: 7px;
+}
+.platformIcon.wii{
+    width: 100px;
+    top: -4px;
+}
+.platformIcon.pc{
+    width: 69px;
+    top: 8px;
+}
+.platformIcon.gamepad{
+    width: 55px;
+    top: 15px;
+}
+.active_status .platformIcon.xbox{
+    width: 85px;
+    background: #0f7c10;
+}
+.active_status .platformIcon.ps{
+    width: 68px;
+    top: 7px;
+    background: #111;
+}
+.active_status .platformIcon.wii{
+    width: 100px;
+    top: -4px;
+    background: #27c3cf;
+}
+.active_status .platformIcon.pc{
+    width: 69px;
+    top: 8px;
+    background: #5c5c5c;
+}
+.active_status .platformIcon.gamepad{
+    width: 55px;
+    top: 15px;
+    background: #9ce2f9;
+}
+
+
+.platformDescIcon{
+    width: 36px;
+    display: inline-block;
+    margin-right: 1em;
+}
+
+.platformDescIcon.ps{background: #111;}
+.platformDescIcon.xbox{background: #0f7c10;}
+.platformDescIcon.pc{background: #188dd7;}
+.platformDescIcon.wii{background: #33dbef;
+    width: 50px;}
+    .platformDescIcon.gamepad{
+        background: #9ce2f9;}
+
+
+
+.path_desc{
+    color: #7a7a7a;
+    font-size: 15px;
+    line-height: 20px;
+}
+
+.user_attempted{
+    display: inline-block;
+    font-size: 15px;
+    color: #5f5d5d;
+    font-weight: 600;
+}
+
+.rating{
+    display: inline-block;
+    text-align: left;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 28px;
+    background: #ecfa05;
+    width: 46px;
+    text-align: center;
+    color: #8d8d8d;
+    height: 42px;
+    border-radius: 5px;
+}
+
+.category{
+    background: #ddd;
+    padding: 2px 14px;
+}
+.release{
+    margin-bottom: 5px;
+    display: inline-block;
+    color: #656363;
+}
+.editor{
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
+    width: 75px;
+}
+.sort_result{
+    display: inline-block;
+    width: 100%;
+    margin-top: 1em;
+    position: absolute;
+    top: 1.5em;
+    left: 0;
+    cursor: pointer;
+}
+
+
+
+/*side*/
+.app_side{
+    display: inline-block;
+    width: 30%;
+    vertical-align: top;
+}
+.app_side_wrap{
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    font-family: "open sans";
+}
+.app_side_title{
+    font-size: 18px;
+    text-align: left;
+    color: #878787;
+    margin-bottom: 1em;
+}
+.app_side_body{}
+.top5_lang{}
+.lang_wrap{
+    display: inline-block;
+    width: 100%;
+}
+.lang_img{
+    display: inline-block;
+    width: 24px;
+    float: left;
+    height: 24px;
+    background: #E0E0E0;
+    position: relative;
+    top: 7px;
+}
+.lang_data{
+    width: 88%;
+    display: inline-block;
+    text-align: left;
+    font-family: "open sans";
+}
+.lang_total{
+    display: inline-block;
+    width: 100%;
+    font-size: 15px;
+    color: #696969;
+    font-weight: 300;
+}
+.lang_bar{
+    display: inline-block;
+    width: 100%;
+    height: 6px;
+    background: #515151;
+    vertical-align: top;
+}
+.lang_wrap:nth-child(2) .lang_bar{
+    background:#6e6e6e;
+    width: 80%;
+}
+.lang_wrap:nth-child(3) .lang_bar{
+    background:#838383;
+    width: 70%;
+}
+.lang_wrap:nth-child(4) .lang_bar{
+    background:#b3b3b3;
+    width: 50%;
+}
+.lang_wrap:nth-child(5) .lang_bar{
+    background:#dadada;
+    width: 30%;
+}
+
+.total_sub{
+    margin-top: 2em;
+}
+.total_count{
+    display: inline-block;
+    width: 150px;
+    height: 150px;
+    border: 7px solid #a1a1a1;
+    border-radius: 200px;
+    font-size: 24px;
+    font-weight: 300;
+    padding-top: 48px;
+    color: #8f8f8f;
+}
+.total_text{
+    font-size: 15px;
+    color: #9c9c9c;
+    margin-top: 6px;
+
+}
+
+.top2{}
+.top2_wrap{
+    margin-top: 3em;
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 3em;
+}
+.top2_head{
+    display: inline-block;
+    width: 100%;
+    text-align: left;
+    background: #ddd;
+    font-size: 15px;
+    padding: 6px 9px;
+    color: #555;
+}
+.top2_body{
+    background: #fff;
+}
+.top2_box{
+    display: inline-block;
+    vertical-align: top;
+    width: 45%;
+    padding: 12px 0;
+}
+.top2_val{
+    font-size: 28px;
+    font-weight: 300;
+    color: #31ABDB;
+}
+.top2_title{
+    font-size: 18px;
+    color: #555;
+    font-weight: 300;
+}
+.level_stat{
+    text-align: center;
+}
+.level_stat_wrap{
+    display: inline-block;
+    margin: 1em;
+}
+.level_stat_wrap .value{
+    background: #56B0DF;
+    color: #fff;
+    width: 75px;
+    height: 75px;
+    border-radius: 75px;
+    padding-top: 20px;
+    font-size: 24px;
+    font-weight: 300;
+}
+.level_stat_wrap .text{
+    color: #555;
+    margin-top: 5px;
+}
+.level_msg{
+    width: 100%;
+    display: inline-block;
+}
+
+
+
+
+
+/*footer*/
+footer{
+    text-align: center;
+    background: #727272;
+    padding: 1em 0;
+    width:100%;
+}
+.foot_wrap{
+    color:#fff;
+    max-width:1180px;
+    display:inline-block;
+}
+.foot_wrap a{
+    color:#ddd;
+}
+
+
+/*Media Query*/
+@media screen and (max-width: 720px) {
+    .logo, .search, .head_submit, .app_side  {
+        float:none;
+    }
+    .website_list, .app_side  {
+        width:100%;
+    }
+    .search{
+        width:90%
+    }
+    .search input[type="text"] {
+        font-size:16px;
+        width: 85%;
+    }
+    .app_wrap h2 {
+        font-size: 32px;
+    }
+    .result_detail {
+        padding: 0 1em 1em;
+    }
+
+    .c_title {
+        font-size: 16px;
+    }
+    .path_desc {
+        font-size: 13px;
+    }
+    .c_info {
+        max-width: 225px;
+        width:100%;
+        padding: 7px;
+    }
+
+    .body_head {
+        padding-top: 2.75em;
+    }
+    .filter_status {
+        text-align: center;
+    }
+    .filter_status_wrap {
+        margin: 5px 10px;
+    }
+    .filter_text {
+        padding: 10px 0;
+        margin-right: 0;
+        width: 100%;
+    }
+
+
+    .result_wrap {
+        max-width: 300px;
+        margin: 1em;
+        width: 90%;
+    }
+
+    .code_view {
+        top: 3px;
+        right: 4px;
+    }
+    .code_level {
+        float: left;
+    }
+    .path_bottom {
+        position: relative;
+        margin-top: 1em;
+        width: 100%;
+    }
+
+    .app_side {
+        padding: 1em;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .c_img {
+        width: 100%;
+        height: auto;
+    }
+    a.c_link {
+        font-size: 12px;
+    }
+}

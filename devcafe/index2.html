@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html data-ng-app="Devcafe" ng-controller="home_controller">
+<head>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Raleway:600,400,200' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+    <link type="text/css" rel="stylesheet" href="css/style.css"/>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.9/angular-route.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.9/angular-sanitize.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+    <script type="text/javascript" src="js/commonFunction.js"></script>
+    
+    <script type="text/javascript" src="js/script.js"></script>
+    <script type="text/javascript" src="js/services/apiservice.js"></script>
+    <title>DevCafe | A simplified platform for searching developers!</title>
+</head>
+<body>
+<!-- header -->
+        <header id="header_container">
+            <div id="header">
+                <div class="logo">
+                    <img src="images/logo.png"/>
+                </div>
+            </div>
+        </header>
+
+        <!-- content -->
+        <div id="content">
+            <div class="body_head">
+                <div class="app_wrap">
+                    <div class="search">
+                        <input type="text" placeholder="Search (name, level or language)" ng-model="searchText"/>
+                    </div>
+                    <div class="search_help">
+                        eg: AngularJS
+                    </div>
+                </div>
+            </div>
+            <div class="body_wrap">
+                <div class="filter_wrap">
+                    <div class="row_wrap" style="text-align:left;">
+                        <div class="filter_status">
+                            <div class="filter_status_wrap" ng-class="{active_status: filter.status.frontend}" ng-click="filter.status.frontend=!filter.status.frontend">
+                                <span class="icon"><i class="material-icons ic-24">computer</i></span>
+                                <div class="filter_status_text">Frontend</div>
+                            </div>
+                            <div class="filter_status_wrap" ng-class="{active_status: filter.status.mobile}" ng-click="filter.status.mobile=!filter.status.mobile">
+                                <span class="icon"><i class="material-icons ic-24">android</i></span>
+                                <div class="filter_status_text">Mobile</div>
+                            </div>
+                            <div class="filter_status_wrap" ng-class="{active_status: filter.status.backend}" ng-click="filter.status.backend=!filter.status.backend">
+                                <span class="icon"><i class="material-icons ic-24">dns</i></span>
+                                <div class="filter_status_text">Backend</div>
+                            </div>
+                            <div class="filter_status_wrap" ng-class="{active_status: filter.status.database}" ng-click="filter.status.database=!filter.status.database">
+                                <span class="icon"><i class="material-icons ic-24">storage</i></span>
+                                <div class="filter_status_text">Database</div>
+                            </div>
+                            <div class="filter_status_wrap" ng-class="{active_status: filter.status.fullstack}" ng-click="filter.status.fullstack=!filter.status.fullstack">
+                                <span class="icon"><i class="material-icons ic-24">cloud_done</i></span>
+                                <div class="filter_status_text">Fullstack</div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="app_wrap" >
+                    <div class="result_detail">
+                        {{filtered.length}} Results for your query <b>{{searchText}}</b>
+                        <div class="pagination">
+                            <div class="pagi_text">Page {{page_number}} of 1 </div>
+                            <div class="pagi_nav">
+                                <span class="pagi_left" ng-click="changePage('prev')"><i class="material-icons ic-18">chevron_left</i></span>
+                                <span class="pagi_right" ng-click="changePage('next')"><i class="material-icons ic-18">chevron_right</i></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="website_list" ng-class="{ser_bg:loading.status===true}">
+                        <div class="result_wrap" ng-repeat="developer in developerArray | filter: searchFilter | filter:filterByStatus | orderBy:sortOrder:reverse as filtered">
+                            <div class="c_info c">
+                                <div class="c_title" target="_blank">
+                                <span class="icon" style="background: #bdbdbd; color:#fff;border-radius: 37px;padding: 1px 6px;margin-right: 10px;"><i class="material-icons ic-24">person</i></span>{{developer.name}}</div>
+                                <div class="code_view" ng-click="open_code_modal(developer)">
+                                    <span class="icon"><i class="material-icons ic-22">code</i></span>
+                                    <span class="text">View<br>Profile</span>
+                                </div>
+                                <div class="c_row">
+                                    <div class="path_desc">
+                                        {{developer.skills}}
+                                    </div>
+                                </div>
+                                <div class="c_row" style="font-size: 12px;">
+                                    <span class="icon"><i class="material-icons ic-20">work</i></span>
+                                    <div class="user_attempted">{{developer.projects_done}}</div> projects
+                                </div>
+                                <div class="c_row">
+                                        <div class="rating">
+                                            <div class="stars">
+                                                <div class="rating" ng-style="{width:'{{(developer.rating/5)*100}}%'}"></div>
+                                                <i></i>
+                                                <i></i>
+                                                <i></i>
+                                                <i></i>
+                                                <i></i>
+                                            </div>
+                                        </div>
+                                </div>
+                                <div class="path_bottom">
+                                    <div class="code_status" ng-init="code_status=5">
+                                        <span class="icon s_accepted" ng-show="developer.status_code === 1"><i class="material-icons ic-22">computer</i></span>
+                                        <span class="icon s_skip" ng-show="developer.status_code === 2"><i class="material-icons ic-22">android</i></span>
+                                        <span class="icon s_exceed" ng-show="developer.status_code === 3"><i class="material-icons ic-22">backend</i></span>
+                                        <span class="icon s_error" ng-show="developer.status_code === 4"><i class="material-icons ic-22">storage</i></span>
+                                        <span class="icon s_wrong" ng-show="developer.status_code === 5"><i class="material-icons ic-22">cloud_done</i></span>
+                                        <span class="text">{{developer.domain}}</span>
+                                    </div>
+                                    <div class="code_level">
+                                        <span class="icon" ng-class="{code_level_E:developer.level[0]==='V'}">{{developer.level[0]}}</span>
+                                        <span class="icon" ng-class="{code_level_M:developer.level[0]==='E'}">{{developer.level[0]}}</span>
+                                        <span class="icon" ng-class="{code_level_H:developer.level[0]==='N'}">{{developer.level[0]}}</span>
+                                        <span class="text">{{developer.level}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div ng-show="loading.status===true" class="loading_wrap">
+                            <img src="images/loading.gif"/>
+                        </div>
+                    </div>
+                    <div class="app_side">
+                        <div class="app_side_wrap top5_lang">
+                            <div class="app_side_title">
+                                Top 5 Languages
+                            </div>
+                            <div class="app_side_body">
+                                <div class="lang_wrap" ng-repeat="lang in statsObj.top_5">
+                                    <div class="lang_img"><img src="{{lang.icon}}"/></div>
+                                    <div class="lang_data">
+                                        <div class="lang_total">{{lang.text}} ({{lang.value}})</div>
+                                        <div class="lang_bar" ng-style="{width:'{{(lang.value/statsObj.top5_total)*100}}%'}"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="app_side_wrap total_sub">
+                            <div class="total_count">{{statsObj.total_sub}}</div>
+                            <div class="total_text">Total Developers</div>
+                        </div>
+                        <div class="app_side_wrap top2">
+                            <div class="top2_wrap">
+                                <div class="top2_head">Top {{(statsObj.top_2.length>1)?statsObj.top_2.length:''}} Platform</div>
+                                <div class="top2_body">
+                                    <div class="top2_box" ng-repeat="top2 in statsObj.top_2">
+                                        <div class="top2_val">{{top2.value}}</div>
+                                        <div class="top2_title">{{top2.text}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="app_side_wrap level_stat">
+                            <div class="level_stat_wrap">
+                                <div class="value" style="background:#d46060;">{{statsObj.sub_level.Veteran}}</div>
+                                <div class="text">Veteran</div>
+                            </div>
+                            <div class="level_stat_wrap">
+                                <div class="value" style="background:#56b0df;">{{statsObj.sub_level.Expert}}</div>
+                                <div class="text">Expert</div>
+                            </div>
+                            <div class="level_stat_wrap">
+                                <div class="value" style="background:#49dfa8;">{{statsObj.sub_level.Novice}}</div>
+                                <div class="text">Novice</div>
+                            </div>
+                            <span class="level_msg">Developers per Level</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--footer-->
+        <footer>
+            <div style="display: inline-block;width: 100%;padding: 1em 0px;;background: rgb(195, 40, 40) none repeat scroll 0% 0%;color: rgb(255, 255, 255);">Visit <a target="_blank" style="color: rgb(21, 21, 21);font-weight: bold;" href="http://rishabhsahay.com/devcafe/">Rishabhsahay.com/devcafe</a> to for  best viewing experience.</div>
+            <div class="foot_wrap">
+                Designed by <a target="_blank" href="http://rishabhsahay.com">Rishabh</a>
+            </div>
+        </footer>
+
+
+<!--modals-->
+<div>
+    <!--View full code-->
+    <div class="modal" id="viewcode_modal_pop" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="viewcode_modal_head">
+                    Profile Details
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">x</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="view_code__pop">
+                    <div class="c_row code_lang" style="font-size: 24px;">{{pop.name}}</div>
+                </div>
+                <div class="modal-foot">
+                    <div class="c_row pop_status">
+                        Designation: {{pop.designation}}
+                    </div>
+                </div>
+                <div class="c_row">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

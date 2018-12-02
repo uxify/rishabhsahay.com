@@ -1,0 +1,232 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Nov 14, 2015, 4:34:38 PM
+    Author     : rrr
+*/
+
+$primaryColor: #093f4c;
+$primaryDark: #05242c;
+$primaryLight: #115667;
+
+$maxw: 1024px;
+$border-primary:1px solid $primaryLight;
+
+$primaryFont: 'Lato', sans-serif;
+
+/*Css*/
+
+* {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing:    border-box;
+	box-sizing:         border-box;
+}
+
+
+footer,
+header,
+nav{
+	display: block;
+}
+
+
+[hidden] {
+	display: none;
+}
+
+html {
+	font-size: 100%;
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;    
+}
+
+body {
+	color: #333;
+	line-height: 1.5;
+	margin: 0;
+        font-family: $primaryFont;
+}
+
+a {
+	color: #16AA91;
+	text-decoration: none;
+}
+
+
+a:focus {
+	outline: none;
+}
+
+a:active,
+a:hover {
+	color: #fff;
+	outline: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	clear: both;
+}
+
+h1 {
+	font-size: 48px;
+	margin: 33px 0;
+}
+
+h2 {
+	font-size: 30px;
+	margin: 25px 0;
+        color: #11266F;
+        font-weight: 600;
+}
+
+h3 {
+	font-size: 22px;
+	margin: 22px 0;
+}
+
+h4 {
+	font-size: 20px;
+	margin: 25px 0;
+}
+
+h5 {
+	font-size: 18px;
+	margin: 30px 0;
+}
+
+h6 {
+	font-size: 16px;
+	margin: 36px 0;
+}
+
+
+p {
+	margin: 0 0 24px;
+}
+
+code,
+kbd,
+pre,
+samp {
+	font-family: monospace, serif;
+	font-size: 14px;
+	-webkit-hyphens: none;
+	-moz-hyphens:    none;
+	-ms-hyphens:     none;
+	hyphens:         none;
+}
+
+menu,
+ol,
+ul {
+	margin: 16px 0;
+	padding: 0 0 0 40px;
+}
+
+ul {
+	list-style-type: square;
+}
+
+nav ul,
+nav ol {
+	list-style: none;
+	list-style-image: none;
+}
+
+img {
+	-ms-interpolation-mode: bicubic;
+	border: 0;
+	vertical-align: middle;
+        max-width:100%;
+}
+
+/*Common*/
+
+#content{
+    /*empty*/
+}
+
+/*header*/
+
+header{
+    background:$primaryColor;
+}
+.head_wrap{
+    max-width: $maxw;
+    padding-top: 1em;
+    margin: 0 auto;
+    width: 100%;
+}
+.logo{
+    width: 180px;
+    display: inline-block;
+}
+
+
+/*page*/
+#page{
+    /*empty*/
+    min-height: 600px;
+}
+.page_section{
+    /*empty*/
+}
+.section_wrap{
+    max-width:$maxw;
+    margin: 0 auto;
+}
+.hlogin{
+    float:right;
+    border:$border-primary;
+    padding: 6px 2em;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 20px;
+    margin-top: 12px;
+}
+
+input[type="text"], input[type="email"]{
+    /*empty*/
+    width: 100%; 
+    height: 45px;
+    border: $border-primary;
+    background: none;
+    border-radius: 3px;
+    font-family:$primaryFont;
+    padding-left: 1em;
+    color: #fff;
+    font-weight:300;
+    font-size: 20px;
+}
+input[type="submit"]{
+    font-weight:300;
+    font-family:$primaryFont;
+    font-size: 20px;
+}
+.form_submit{
+    height: 45px;
+    width: 120px;
+    font-size: 18px;
+    font-weight: 300;
+    background: $primaryDark;
+    border: 1px solid $primaryDark;
+    color: #fff;
+    border-radius: 3px;
+    position: relative;
+    top: 2px;
+    margin-left: 1em;
+}
+
+
+/*footer*/
+footer{
+    /*empty*/
+}
