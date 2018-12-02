@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html data-ng-app="GameArema" ng-controller="home_controller">
+<head>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Raleway:600,400,200' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+    <link type="text/css" rel="stylesheet" href="css/style.css"/>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.9/angular-route.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.9/angular-sanitize.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <script type="text/javascript" src="js/common.js"></script>
+    <script type="text/javascript" src="js/script.js"></script>
+    <title>Game Arema | Listing the games developed for different platforms !</title>
+</head>
+<body>
+<!-- header -->
+        <header id="header_container">
+            <div id="header">
+                <div class="logo">
+                    <img src="images/logo.png"/>
+                </div>
+            </div>
+        </header>
+
+        <!-- content -->
+        <div id="content">
+            <div class="body_head">
+                <div class="app_wrap">
+                    <div class="search">
+                        <input type="text" placeholder="Search (name)" ng-model="searchText" ng-change="searchFilter()"/>
+                    </div>
+                    <div class="search_help">
+                        eg: Total War
+                    </div>
+                </div>
+            </div>
+            <div class="body_wrap">
+                <div class="filter_wrap">
+                    <div class="row_wrap" style="text-align:left;">
+                        <div class="filter_status">
+                            <div class="filter_status_wrap" ng-class="{active_status: filter.platform.xbox}" ng-click="filter.platform.xbox=!filter.platform.xbox; filterByPlatform()">
+                                <span class="platformIcon xbox"><img title="Xbox" src="./images/xbox.png"/></span>
+                            </div>
+                            <div class="filter_status_wrap" ng-class="{active_status: filter.platform.ps}" ng-click="filter.platform.ps=!filter.platform.ps; filterByPlatform()">
+                                <span class="platformIcon ps"><img title="Play Station" src="./images/ps.png"/></span>
+                            </div>
+                            <div class="filter_status_wrap" ng-class="{active_status: filter.platform.wii}" ng-click="filter.platform.wii=!filter.platform.wii; filterByPlatform()">
+                                <span class="platformIcon wii"><img title="Wii" src="./images/wii.png"/></span>
+                            </div>
+                            <div class="filter_status_wrap" ng-class="{active_status: filter.platform.pc}" ng-click="filter.platform.pc=!filter.platform.pc; filterByPlatform()">
+                                <span class="platformIcon pc"><img title="PC" src="./images/pc.png"/></span>
+                            </div>
+                            <div class="filter_status_wrap" ng-class="{active_status: filter.platform.other}" ng-click="filter.platform.other=!filter.platform.other; filterByPlatform()">
+                                <span class="platformIcon gamepad"><img title="Others" src="./images/gamepad.png"/></span>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="app_wrap" >
+                    <div class="result_detail">
+                        {{filteredList.length}} Results for your query {{searchText}}
+                        <div class="pagination">
+                            <div class="pagi_text">Page {{page_number}} of {{total_page}} </div>
+                            <div class="pagi_nav">
+                                <span class="pagi_left" ng-click="changePage('prev')"><i class="material-icons ic-18">chevron_left</i></span>
+                                <span class="pagi_right" ng-click="changePage('next')"><i class="material-icons ic-18">chevron_right</i></span>
+                            </div>
+                            <div class="sort_result" ng-click="sortOrder = !sortOrder; sortResult()">
+                                Sort By Score 
+                                <i class="material-icons ic-18">sort</i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="website_list" ng-class="{ser_bg:loading.status===true}">
+                        <div class="result_wrap" ng-repeat="submission in submissionArray">
+                            <div class="c_info c">
+                                <div class="c_title" target="_blank">{{submission.title}}</div>
+                                <div class="c_row">
+                                    <span class="{{'platformDescIcon ' + (getPlatformLogo(submission.platform)).class}}">
+                                        <img ng-src="{{'./images/'+(getPlatformLogo(submission.platform)).logo}}"/>
+                                    </span>
+                                    <div class="user_attempted">{{submission.platform}}</div>
+                                </div>
+                                <div class="rating">
+                                    {{submission.score}}
+                                </div>
+                                <div class="c_row">
+                                    <span class="release">
+                                        Released in <b> {{submission.release_year}} </b>
+                                    </span>
+                                </div>
+                                <div class="c_row">
+                                    <span class="category" ng-repeat="genre in submission.genre.split(',')">
+                                        {{genre}}
+                                    </span>
+                                </div>
+                                <div class="editor">
+                                    <div ng-class="{hidden: submission.editors_choice==='N'}"><img src="./images/editors.jpg"/></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div ng-show="loading.status===true" class="loading_wrap">
+                            <img src="images/loading.gif"/>
+                        </div>
+                    </div>
+                    <div class="app_side">
+                        <div class="app_side_wrap top5_lang">
+                            <div class="app_side_title">
+                                Top 5 Games
+                            </div>
+                            <div class="app_side_body">
+                                <div class="lang_wrap" ng-repeat="lang in statsObj.top_5">
+                                    <div class="lang_img"></div>
+                                    <div class="lang_data">
+                                        <div class="lang_total">{{lang.title}} ({{lang.score}})</div>
+                                        <div class="lang_bar" ng-style="{width:'{{(lang.value/statsObj.top5_total)*100}}%'}"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--footer-->
+        <footer>
+            <div style="display: inline-block;width: 100%;padding: 1em 0px;;background: rgb(195, 40, 40) none repeat scroll 0% 0%;color: rgb(255, 255, 255);">Visit <a target="_blank" style="color: rgb(21, 21, 21);font-weight: bold;" href="http://rishabhsahay.com/sr/">Rishabhsahay.com/sr</a> to for  best viewing experience.</div>
+            <div class="foot_wrap">
+                Designed by <a target="_blank" href="http://rishabhsahay.com">Rishabh</a>
+            </div>
+        </footer>
+
+
+
+</body>
+</html>
